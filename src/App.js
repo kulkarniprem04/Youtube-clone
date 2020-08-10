@@ -1,25 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import './App.css';
+import Header from './Header.js';
+import Sidebar from './Sidebar.js';
+import Recommended from './Recomended.js';
+import Searchpage from './Searchpage';
+import youtube from './youtube.js';
 
 function App() {
+  const [clicked, setClicked] = useState(false)
+  const [darkmode, setDarkmode] = useState(false) 
+
+  const menuIconSelect = () => {
+    setClicked(!clicked)
+  }
+
+  const toggleChecked = () => {
+    setDarkmode((prev) => !prev);
+  };
+
+  const handleFormSubmit = async (searchterm) => {
+    const response = await youtube.get('/search', {
+        params: {
+            q: searchterm
+        }
+    })
+
+    console.log(response)
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <>
+            <Router>
+              <Header handleFormSubmit={handleFormSubmit} darkmode={darkmode} clicked={clicked} menuIconSelect={menuIconSelect}/>
+              <Switch>
+                <Route path="/search/:searchTerm">
+                <div className="App_page">
+                  <Sidebar darkmode={darkmode} toggleChecked={toggleChecked} clicked={clicked} />
+                  <Searchpage />    
+                </div>
+                </Route>
+                <Route path="/">
+                <div className="App_page">
+                  <Sidebar darkmode={darkmode} toggleChecked={toggleChecked} clicked={clicked} />
+                  <Recommended darkmode={darkmode} clicked={clicked}/>    
+                </div>
+                </Route>
+              </Switch>
+            </Router>
+
+
+
+            
+          </>
+        
   );
 }
 

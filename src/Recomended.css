@@ -1,0 +1,28 @@
+.videos {
+    flex: 0.8;
+    background-color: #f9f9f9;
+    padding: 4px 20px;
+    padding-bottom: 0;
+}
+
+.videos.darkmode {
+    background-color: rgb(48, 48, 48);
+}
+
+.videos.darkmode > h2 {
+    color: white;
+}
+
+.videos.videos_clicked {
+    flex: 0.98;
+}
+
+.videos > h2 {
+    margin-left: 5px;
+    margin-bottom: 20px;
+}
+
+.recommended_content {
+    display: flex;
+    flex-wrap: wrap;
+}
