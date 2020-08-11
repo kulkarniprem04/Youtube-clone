@@ -8,9 +8,10 @@ import Searchpage from "./Searchpage";
 //import youtube from './youtube.js';
 
 function App() {
-  const API_KEY = 'AIzaSyAlnrOCW5kTF67bddvxA8boYmrFi3-3jNA';
+  const API_KEY = "AIzaSyAlnrOCW5kTF67bddvxA8boYmrFi3-3jNA";
   const [clicked, setClicked] = useState(false);
   const [darkmode, setDarkmode] = useState(false);
+  const [videos, setVideos] = useState([]);
 
   const menuIconSelect = () => {
     setClicked(!clicked);
@@ -21,17 +22,20 @@ function App() {
   };
 
   const params = new URLSearchParams({
-    part: 'snippet',
+    part: "snippet",
     maxResults: 10,
-    key: API_KEY ,
-    type: 'video' 
-  })
-
+    key: API_KEY
+  });
 
   const handleFormSubmit = async (searchterm) => {
-    await fetch(`https://www.googleapis.com/youtube/v3/search?q=${searchterm}${ params.toString()}`)
+    await fetch(
+      `https://www.googleapis.com/youtube/v3/search?${params.toString()}&q=${searchterm}`
+    )
       .then((response) => response.json())
-      .then(console.log)
+      .then((data) => {
+        console.log(data);
+        setVideos(data.items);
+      });
   };
 
   return (
@@ -51,7 +55,7 @@ function App() {
                 toggleChecked={toggleChecked}
                 clicked={clicked}
               />
-              <Searchpage />
+              <Searchpage videos={videos} />
             </div>
           </Route>
           <Route path="/">
