@@ -13,7 +13,7 @@ function Recomended({
 }) {
   return (
     <div
-      className={`videos ${clicked === true && "videos_clicked"} ${
+      className={`videos_recomended ${clicked === true && "videos_clicked"} ${
         darkmode === true && "darkmode"
       }`}
     >

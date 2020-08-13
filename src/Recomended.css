@@ -1,4 +1,4 @@
-.videos {
+.videos_recomended {
   flex: 0.8;
   background-color: #f9f9f9;
   padding: 4px 20px;
@@ -9,19 +9,19 @@
   margin-bottom: 40px;
 }
 
-.videos.darkmode {
+.videos_recomended.darkmode {
   background-color: rgb(48, 48, 48);
 }
 
-.videos.darkmode > h2 {
+.videos_recomended.darkmode > h2 {
   color: white;
 }
 
-.videos.videos_clicked {
+.videos_recomended.videos_clicked {
   flex: 0.98;
 }
 
-.videos > h2 {
+.videos_recomended > h2 {
   margin-left: 5px;
   margin-bottom: 20px;
 }

@@ -2,11 +2,12 @@ import React from "react";
 import "./Videolist.css";
 import Videos from "./Videos.js";
 
-function Videolist({ handleSelectedVideo, videos }) {
+function Videolist({ darkmode, handleSelectedVideo, videos }) {
   return (
     <div>
       {videos.map((video) => (
         <Videos
+          darkmode={darkmode}
           handleSelectedVideo={handleSelectedVideo}
           video={video}
           thumbnail={video.snippet.thumbnails.medium.url}

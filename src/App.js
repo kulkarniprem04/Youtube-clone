@@ -68,6 +68,7 @@ function App() {
                 clicked={clicked}
               />
               <Searchpage
+                darkmode={darkmode}
                 isselected={isselected}
                 selectedvideo={selectedvideo}
                 handleSelectedVideo={handleSelectedVideo}
@@ -87,7 +88,7 @@ function App() {
                 setSelectedvideo={setSelectedvideo}
                 recomended_selected={recomended_selected}
                 setRecomended_selected={setRecomended_selected}
-                arkmode={darkmode}
+                darkmode={darkmode}
                 clicked={clicked}
               />
             </div>

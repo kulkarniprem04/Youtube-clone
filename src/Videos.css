@@ -3,6 +3,10 @@
   margin-top: 20px;
 }
 
+.videos_content.darkmode > .video_info > h4 {
+  color: white;
+}
+
 .video_thumbnail {
   height: 150px;
   width: 150;

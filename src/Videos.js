@@ -2,6 +2,7 @@ import React from "react";
 import "./Videos.css";
 
 function Videos({
+  darkmode,
   handleSelectedVideo,
   video,
   thumbnail,
@@ -14,7 +15,7 @@ function Videos({
     <>
       <div
         onClick={() => handleSelectedVideo(video)}
-        className="videos_content"
+        className={`videos_content ${darkmode === true && "darkmode"}`}
       >
         <div>
           <img
