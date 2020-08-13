@@ -1,0 +1,25 @@
+.videos_content {
+  display: flex;
+  margin-top: 20px;
+}
+
+.video_thumbnail {
+  height: 150px;
+  width: 150;
+}
+
+.video_info {
+  margin-left: 10px;
+}
+
+.video_info > h4 {
+  margin-bottom: 20px;
+}
+
+.video_timestamp {
+  margin-bottom: 10px;
+}
+
+.video_info > p {
+  color: grey;
+}

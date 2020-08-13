@@ -2,8 +2,14 @@ import React from "react";
 import "./searchpage.css";
 import TuneOutlinedIcon from "@material-ui/icons/TuneOutlined";
 import Videolist from "./Videolist.js";
+import ResponsivePlayer from "./VideoPlayer.js";
 
-function Searchpage({ videos }) {
+function Searchpage({
+  isselected,
+  selectedvideo,
+  handleSelectedVideo,
+  videos
+}) {
   return (
     <div className="searchpage">
       <div className="searchpage_filter">
@@ -11,8 +17,11 @@ function Searchpage({ videos }) {
         <h2>FILTER</h2>
       </div>
       <hr />
+      {isselected === true && (
+        <ResponsivePlayer selectedvideo={selectedvideo} />
+      )}
       <div>
-        <Videolist videos={videos} />
+        <Videolist handleSelectedVideo={handleSelectedVideo} videos={videos} />
       </div>
     </div>
   );

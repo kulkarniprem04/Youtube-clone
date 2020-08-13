@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./Header.js";
@@ -12,6 +12,9 @@ function App() {
   const [clicked, setClicked] = useState(false);
   const [darkmode, setDarkmode] = useState(false);
   const [videos, setVideos] = useState([]);
+  const [selectedvideo, setSelectedvideo] = useState("");
+  const [isselected, setIsselected] = useState(false);
+  const [recomended_selected, setRecomended_selected] = useState(false);
 
   const menuIconSelect = () => {
     setClicked(!clicked);
@@ -28,14 +31,23 @@ function App() {
   });
 
   const handleFormSubmit = async (searchterm) => {
-    await fetch(
+    const response = await fetch(
       `https://www.googleapis.com/youtube/v3/search?${params.toString()}&q=${searchterm}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setVideos(data.items);
-      });
+    );
+    const data = await response.json();
+    console.log(data);
+    setVideos(data.items);
+    //console.log(videos)
+  };
+
+  useEffect(() => {
+    console.log(videos);
+    console.log(selectedvideo);
+  }, [videos, selectedvideo]);
+
+  const handleSelectedVideo = (video_selected) => {
+    setSelectedvideo(video_selected.id.videoId);
+    setIsselected(true);
   };
 
   return (
@@ -55,7 +67,12 @@ function App() {
                 toggleChecked={toggleChecked}
                 clicked={clicked}
               />
-              <Searchpage videos={videos} />
+              <Searchpage
+                isselected={isselected}
+                selectedvideo={selectedvideo}
+                handleSelectedVideo={handleSelectedVideo}
+                videos={videos}
+              />
             </div>
           </Route>
           <Route path="/">
@@ -65,7 +82,14 @@ function App() {
                 toggleChecked={toggleChecked}
                 clicked={clicked}
               />
-              <Recommended darkmode={darkmode} clicked={clicked} />
+              <Recommended
+                selectedvideo={selectedvideo}
+                setSelectedvideo={setSelectedvideo}
+                recomended_selected={recomended_selected}
+                setRecomended_selected={setRecomended_selected}
+                arkmode={darkmode}
+                clicked={clicked}
+              />
             </div>
           </Route>
         </Switch>
