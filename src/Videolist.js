@@ -2,11 +2,22 @@ import React from "react";
 import "./Videolist.css";
 import Videos from "./Videos.js";
 
-function Videolist({ darkmode, handleSelectedVideo, videos }) {
+function Videolist({
+  videocount,
+  subscribercount,
+  viewcount,
+  darkmode,
+  handleSelectedVideo,
+  videos
+}) {
   return (
     <div>
       {videos.map((video) => (
         <Videos
+          videocount={videocount}
+          subscribercount={subscribercount}
+          viewcount={viewcount}
+          kind={video.id.kind}
           darkmode={darkmode}
           handleSelectedVideo={handleSelectedVideo}
           video={video}

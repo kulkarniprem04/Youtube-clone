@@ -5,6 +5,9 @@ import Videolist from "./Videolist.js";
 import ResponsivePlayer from "./VideoPlayer.js";
 
 function Searchpage({
+  videocount,
+  subscribercount,
+  viewcount,
   darkmode,
   isselected,
   selectedvideo,
@@ -23,6 +26,9 @@ function Searchpage({
       )}
       <div>
         <Videolist
+          videocount={videocount}
+          subscribercount={subscribercount}
+          viewcount={viewcount}
           darkmode={darkmode}
           handleSelectedVideo={handleSelectedVideo}
           videos={videos}

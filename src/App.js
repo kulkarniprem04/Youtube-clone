@@ -15,6 +15,9 @@ function App() {
   const [selectedvideo, setSelectedvideo] = useState("");
   const [isselected, setIsselected] = useState(false);
   const [recomended_selected, setRecomended_selected] = useState(false);
+  const [viewcount, setViewcount] = useState("");
+  const [subscribercount, setSubscribercount] = useState("");
+  const [videocount, setVideocount] = useState("");
 
   const menuIconSelect = () => {
     setClicked(!clicked);
@@ -38,6 +41,15 @@ function App() {
     console.log(data);
     setVideos(data.items);
     //console.log(videos)
+
+    const resp = await fetch(
+      `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${data.items[0].id.channelId}&key=${API_KEY}`
+    );
+    const channeldata = await resp.json();
+    console.log(channeldata);
+    setViewcount(channeldata.items[0].statistics.viewCount);
+    setSubscribercount(channeldata.items[0].statistics.subscriberCount);
+    setVideocount(channeldata.items[0].statistics.videoCount);
   };
 
   useEffect(() => {
@@ -60,7 +72,7 @@ function App() {
           menuIconSelect={menuIconSelect}
         />
         <Switch>
-          <Route path="/search/:searchTerm">
+          <Route path="/search">
             <div className="App_page">
               <Sidebar
                 darkmode={darkmode}
@@ -68,6 +80,9 @@ function App() {
                 clicked={clicked}
               />
               <Searchpage
+                videocount={videocount}
+                subscribercount={subscribercount}
+                viewcount={viewcount}
                 darkmode={darkmode}
                 isselected={isselected}
                 selectedvideo={selectedvideo}
