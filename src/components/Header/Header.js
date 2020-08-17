@@ -16,7 +16,7 @@ function Header({ handleFormSubmit, darkmode, clicked, menuIconSelect }) {
   };
 
   return (
-    <div className={darkmode ? "header_darktheme" : "Header"}>
+    <div className={`header ${darkmode === true && "darkmode"}`}>
       <div className="header_left">
         <MenuIcon
           darkmode={darkmode}
@@ -39,7 +39,7 @@ function Header({ handleFormSubmit, darkmode, clicked, menuIconSelect }) {
           placeholder="Search"
           type="text"
         />
-        <Link to={`/search`}>
+        <Link className="link" to={`/search`}>
           <SearchIcon
             onClick={() => handleSubmit()}
             className="header_searchicon"

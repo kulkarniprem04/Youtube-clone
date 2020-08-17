@@ -17,6 +17,14 @@ hr {
 }
 
 .channel_info > .channel_text > .channel_subviews {
+  color: grey;
+}
+
+.channel_info > .channel_text > .channel_description {
+  color: grey;
+}
+
+.channel_info > .channel_text > .channel_subviews {
   margin-top: 5px;
 }
 
