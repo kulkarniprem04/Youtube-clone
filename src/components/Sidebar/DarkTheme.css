@@ -1,0 +1,26 @@
+.darktheme {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+    margin-top: 2px;
+    padding: 10px 20px; 
+}
+
+.darktheme.darktheme_enabled:hover {
+    background-color: rgb(45, 45, 45);
+}
+
+.darktheme.darktheme_enabled > h2 {
+    color: white;
+}
+
+.darktheme:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.darktheme > h2 {
+    margin-right: 30px;
+    font-size: 12px;
+    font-weight: 500;
+}
