@@ -11,14 +11,13 @@
 
 .header.darkmode {
   background-color: rgb(65, 64, 64);
-  
 }
 
-.header.darkmode > .header_icons {
+.header.darkmode .header_icons {
   color: white;
 }
 
-.header.darkmode > .searchbar > input {
+.header.darkmode .searchbar > input {
   flex: 1;
   border: none;
   height: 30px;
@@ -26,7 +25,7 @@
   color: white;
 }
 
-.header.darkmode > .searchbar {
+.header.darkmode .searchbar {
   display: flex;
   align-items: center;
   width: 40%;
@@ -34,7 +33,7 @@
   height: 30px;
 }
 
-.header.darkmode > .searchbar > .link > .header_searchicon {
+.header.darkmode .searchbar .link .header_searchicon {
   width: 50px !important;
   background-color: lightgray;
   height: 30px !important;
@@ -51,6 +50,12 @@
   margin-left: 20px;
 }
 
+.youtube_logo_white {
+  height: 75px;
+  width: auto;
+  margin: 0%;
+}
+
 .searchbar {
   display: flex;
   align-items: center;
@@ -58,13 +63,13 @@
   border: 1px solid lightgray;
 }
 
-.searchbar > input {
+.searchbar input {
   flex: 1;
   border: none;
   height: 20px;
 }
 
-.searchbar > input:focus {
+.searchbar input:focus {
   outline: 0;
 }
 

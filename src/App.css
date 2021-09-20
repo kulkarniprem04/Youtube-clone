@@ -1,8 +1,10 @@
 * {
   margin: 0px;
+  padding: 0;
 }
 
 .App_page {
-    display: flex;
-    
+  display: flex;
+  height: 100%;
+  /* background-color: red; */
 }

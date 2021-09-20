@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Header.css";
 import MenuIcon from "./MenuIcon.js";
 import VideoCallIcon from "@material-ui/icons/VideoCall";
@@ -7,12 +7,21 @@ import AppsIcon from "@material-ui/icons/Apps";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import Avatar from "@material-ui/core/Avatar";
 import SearchIcon from "@material-ui/icons/Search";
+import ytLogo from "../../assets/YouTube_Logo.svg";
 
 function Header({ handleFormSubmit, darkmode, clicked, menuIconSelect }) {
   const [inputsearch, setInputsearch] = useState("");
+  const history = useHistory();
 
   const handleSubmit = () => {
     handleFormSubmit(inputsearch);
+  };
+
+  const handlekeyDown = event => {
+    if (event.key === "Enter") {
+      handleFormSubmit(inputsearch);
+      history.push("/search");
+    }
   };
 
   return (
@@ -23,21 +32,24 @@ function Header({ handleFormSubmit, darkmode, clicked, menuIconSelect }) {
           clicked={clicked}
           click={menuIconSelect}
         />
-        <Link to="/">
-          <img
-            className="youtube_logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/9/98/YouTube_Logo.svg"
-            alt="logo"
-          />
-        </Link>
+        {darkmode ? (
+          <Link to="/">
+            <img className="youtube_logo" src={ytLogo} alt="logo" />
+          </Link>
+        ) : (
+          <Link to="/">
+            <img className="youtube_logo" src={ytLogo} alt="logo" />
+          </Link>
+        )}
       </div>
 
       <div className="searchbar">
         <input
-          onChange={(e) => setInputsearch(e.target.value)}
+          onChange={e => setInputsearch(e.target.value)}
           value={inputsearch}
           placeholder="Search"
           type="text"
+          onKeyDown={handlekeyDown}
         />
         <Link className="link" to={`/search`}>
           <SearchIcon
